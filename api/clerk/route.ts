@@ -24,7 +24,7 @@ export async function POST(request: Request) {
     const payload = await validateRequest(request);
 
     if (payload.type === 'user.created') {
-        const { id, email_addresses, first_name, last_name, image_url } = payload.data;
+        const { id, email_addresses, first_name, last_name, image_url} = payload.data;
 
         try {
             const client = await clientPromise;
@@ -37,6 +37,7 @@ export async function POST(request: Request) {
                 lastName: last_name,
                 image: image_url,
                 createdAt: new Date(),
+                role: "Member"
             });
 
             console.log('✅ User created in DB');
